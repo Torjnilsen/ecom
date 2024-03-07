@@ -5,6 +5,7 @@ import { StateProps, StoreProduct } from "../../type";
 import { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
  
 const CartPayment = () => {
   const { productData, userInfo } = useSelector(
@@ -72,11 +73,13 @@ const CartPayment = () => {
           </button>
         </div>
       ) : (
+        <Link href="/checkout">
         <div className="flex flex-col items-center">
           <button className="w-full h-10 text-sm font-semibold bg-amazon_blue bg-opacity-50 text-white rounded-lg ">
             Proceed to Buy
           </button>
         </div>
+        </Link>
       )}
     </div>
   );
