@@ -1,14 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 
-const ContactForm = () => {
-  const [formData, setFormData] = useState({
+interface FormData {
+  fullName: string;
+  subject: string;
+  email: string;
+  body: string;
+}
+
+interface Errors {
+  fullName: string;
+  subject: string;
+  email: string;
+  body: string;
+}
+
+const ContactForm: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
     fullName: '',
     subject: '',
     email: '',
     body: '',
   });
 
-  const [errors, setErrors] = useState({
+  const [errors, setErrors] = useState<Errors>({
     fullName: '',
     subject: '',
     email: '',
@@ -17,7 +31,7 @@ const ContactForm = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -27,7 +41,7 @@ const ContactForm = () => {
     validateField(name, value);
   };
 
-  const validateField = (name, value) => {
+  const validateField = (name: string, value: string) => {
     let errorMessage = '';
 
     switch (name) {
@@ -49,22 +63,24 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-   
+    // Perform form submission logic here
+    // You can send the form data to your server or handle it as needed
     console.log('Form submitted:', formData);
 
+    // Set the submission status to true
     setIsSubmitted(true);
   };
 
   return (
     <div className="bg-white p-8 rounded shadow-md max-w-md mx-auto">
       {isSubmitted ? (
-        <p className="text-green-500 text-sm mb-4">message has been sent successfully!</p>
+        <p className="text-green-500 text-sm mb-4">Message has been sent successfully!</p>
       ) : (
         <form onSubmit={handleSubmit}>
-        <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+          <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
           <div className="mb-4">
             <label htmlFor="fullName" className="block text-sm font-medium text-gray-600">
               Full Name:
