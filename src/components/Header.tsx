@@ -21,17 +21,7 @@ const Header = () => {
   useEffect(() => {
     setAllData(allProducts.allProducts);
   }, [allProducts]);
-  useEffect(() => {
-    if (session) {
-      dispatch(
-        addUser({
-          name: session?.user?.name,
-          email: session?.user?.email,
-          image: session?.user?.image,
-        })
-      );
-    }
-  }, [session]);
+
  
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -112,10 +102,12 @@ const Header = () => {
           </div>
         ) : (
           <div
-            onClick={() => signIn()}
+           
             className="text-xs text-gray-100 flex flex-col justify-center px-2 border border-transparent hover:border-white cursor-pointer duration-300 h-[70%]"
           >
+            <Link href="/contact">
             <p>contact us here</p>
+            </Link>
             <p className="text-white font-bold flex items-center">
               <span>
                 <BiCaretDown />
