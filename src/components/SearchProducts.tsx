@@ -1,5 +1,6 @@
 import React from "react";
 import FormattedPrice from "./FormattedPrice";
+import Image from "next/image";
  
 interface Props {
   id: number;
@@ -18,7 +19,7 @@ type Item = {
 const SearchProducts = ({ item }: Item) => {
   return (
     <div className="flex items-center gap-4">
-      <img
+      <Image
         className="w-24"
         src={item.imageUrl}
         alt="productImage"
