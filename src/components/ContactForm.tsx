@@ -66,11 +66,8 @@ const ContactForm: React.FC = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Perform form submission logic here
-    // You can send the form data to your server or handle it as needed
     console.log('Form submitted:', formData);
 
-    // Set the submission status to true
     setIsSubmitted(true);
   };
 
