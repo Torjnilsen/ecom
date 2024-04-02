@@ -19,12 +19,7 @@ type Item = {
 const SearchProducts = ({ item }: Item) => {
   return (
     <div className="flex items-center gap-4">
-      <Image
-        className="w-24"
-        src={item.imageUrl}
-        alt="productImage"
-        onError={(e) => console.error("Image error:", e)}
-      />
+      
       <div>
         <p className="text-xs -mb-1">
           {item.title}_{item.tags}
