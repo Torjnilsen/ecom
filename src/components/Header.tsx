@@ -35,7 +35,7 @@ const Header = () => {
       item.title.toLocaleLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredProducts(filtered);
-  }, [searchQuery]);
+  }, [searchQuery, allData]);
  
   return (
     <div className="w-full h-20 bg-amazon_blue text-lightText sticky top-0 z-50">
