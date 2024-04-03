@@ -14,13 +14,11 @@ export default function App({
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
-        <SessionProvider session={session}>
           <div className="font-bodyFont bg-gray-300">
             <RootLayout>
               <Component {...pageProps} />
             </RootLayout>
           </div>
-        </SessionProvider>
       </PersistGate>
     </Provider>
   );

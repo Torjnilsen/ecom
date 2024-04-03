@@ -7,14 +7,11 @@ import { SlLocationPin } from "react-icons/sl";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { StateProps, StoreProduct } from "../../type";
-import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { addUser } from "@/store/nextSlice";
 import SearchProducts from "./SearchProducts";
 const Header = () => {
-  const { data: session } = useSession();
   const [allData, setAllData] = useState([]);
-  const { productData, favoriteData, userInfo, allProducts } = useSelector(
+  const { productData,  allProducts } = useSelector(
     (state: StateProps) => state.next
   );
   const dispatch = useDispatch();
@@ -95,12 +92,7 @@ const Header = () => {
             </div>
           )}
         </div>
-        {userInfo ? (
-          <div className="flex items-center px-2 border border-transparent hover:border-white cursor-pointer duration-300 h-[70%] gap-1">
-           
-            
-          </div>
-        ) : (
+          
           <div
            
             className="text-xs text-gray-100 flex flex-col justify-center px-2 border border-transparent hover:border-white cursor-pointer duration-300 h-[70%]"
@@ -114,7 +106,7 @@ const Header = () => {
               </span>
             </p>
           </div>
-        )}
+        
  
         <Link
           href={"/cart"}
